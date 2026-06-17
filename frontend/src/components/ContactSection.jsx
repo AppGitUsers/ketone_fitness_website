@@ -63,7 +63,7 @@ import { createEnquiry } from "../api/api";
     }
   };
   return (
-    <section className="min-h-screen bg-[#F7F3EC] py-20">
+    <section className="bg-[#F7F3EC] py-14 sm:py-20">
 
       {showSuccess && (
           <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
@@ -93,13 +93,13 @@ import { createEnquiry } from "../api/api";
           </div>
         )}
 
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
           {/* LEFT SIDE FORM */}
           <div className="lg:col-span-1">
-            <div className="bg-white rounded-3xl shadow-lg p-8">
+            <div className="bg-white rounded-3xl shadow-lg p-6 sm:p-8">
 
               <h2 className="text-3xl font-bold mb-2">
                 Send Enquiry
@@ -261,7 +261,7 @@ import { createEnquiry } from "../api/api";
 
           {/* RIGHT SIDE */}
           <div className="lg:col-span-1">
-            <div className="bg-[#1F1F1F] text-white rounded-3xl p-8">
+            <div className="bg-[#1F1F1F] text-white rounded-3xl p-6 sm:p-8">
 
               <h2 className="text-2xl font-bold mb-8">
                 Contact Information

@@ -29,7 +29,7 @@ function TransformationVideos() {
 
   return (
     <section
-      className="relative py-24 overflow-hidden bg-cover bg-center bg-fixed"
+      className="relative py-16 sm:py-20 lg:py-24 overflow-hidden bg-cover bg-center"
       style={{
         backgroundImage: `url(${gymBg})`,
       }}

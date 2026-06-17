@@ -1,58 +1,111 @@
-import {
-  FaFacebookF,
-  FaInstagram,
-  FaYoutube,
-  FaWhatsapp,
-} from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaYoutube, FaWhatsapp } from "react-icons/fa";
+import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { Link } from "react-router-dom";
 
 function Footer() {
+  const navLinks = [
+    { name: "Home", path: "/" },
+    { name: "Transformations", path: "/transformations" },
+    { name: "Gallery", path: "/gallery" },
+    { name: "Membership", path: "/membership" },
+    { name: "Contact", path: "/contact" },
+  ];
+
   return (
     <footer className="bg-[#1F1F1F] text-white">
 
-      <div className="max-w-7xl mx-auto px-6 py-6">
+      {/* Main Footer */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
 
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-
-          {/* Social Media */}
-          <div className="flex items-center gap-4">
-
-            <a
-              href="#"
-              className="hover:text-[#D97706] transition"
-            >
-              <FaFacebookF size={18} />
-            </a>
-
-            <a
-              href="#"
-              className="hover:text-[#D97706] transition"
-            >
-              <FaInstagram size={18} />
-            </a>
-
-            <a
-              href="#"
-              className="hover:text-[#D97706] transition"
-            >
-              <FaYoutube size={18} />
-            </a>
-
-            <a
-              href="#"
-              className="hover:text-[#D97706] transition"
-            >
-              <FaWhatsapp size={18} />
-            </a>
-
+          {/* Brand */}
+          <div className="sm:col-span-2 lg:col-span-1">
+            <h2 className="text-xl sm:text-2xl font-bold text-white mb-3">
+              Ketone Fitness
+            </h2>
+            <p className="text-gray-400 text-sm leading-relaxed mb-5">
+              Premier fitness center in Hosur, Tamil Nadu.
+              Transform your body with expert personal training,
+              modern equipment, and flexible membership plans.
+            </p>
+            <div className="flex items-center gap-3">
+              <a href="#" aria-label="Facebook" className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#D97706] flex items-center justify-center transition duration-300">
+                <FaFacebookF size={15} />
+              </a>
+              <a href="#" aria-label="Instagram" className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#D97706] flex items-center justify-center transition duration-300">
+                <FaInstagram size={15} />
+              </a>
+              <a href="#" aria-label="YouTube" className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#D97706] flex items-center justify-center transition duration-300">
+                <FaYoutube size={15} />
+              </a>
+              <a href="#" aria-label="WhatsApp" className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#D97706] flex items-center justify-center transition duration-300">
+                <FaWhatsapp size={15} />
+              </a>
+            </div>
           </div>
 
-          {/* Copyright */}
-          <div className="text-sm text-gray-400 text-center md:text-right">
-            © {new Date().getFullYear()} Ketone Fitness. All Rights Reserved.
+          {/* Quick Links */}
+          <div>
+            <h3 className="font-bold text-white mb-4 text-base sm:text-lg">Quick Links</h3>
+            <ul className="space-y-2.5">
+              {navLinks.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    to={link.path}
+                    className="text-gray-400 hover:text-[#D97706] transition text-sm"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Services */}
+          <div>
+            <h3 className="font-bold text-white mb-4 text-base sm:text-lg">Our Services</h3>
+            <ul className="space-y-2.5 text-sm text-gray-400">
+              {["Weight Loss", "Weight Gain", "Personal Training", "Strength Training", "Cardio Training", "Nutrition Coaching"].map((s) => (
+                <li key={s}>{s}</li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div>
+            <h3 className="font-bold text-white mb-4 text-base sm:text-lg">Contact Us</h3>
+            <address className="not-italic space-y-3">
+              <div className="flex items-start gap-3 text-sm text-gray-400">
+                <MapPin size={16} className="text-[#D97706] flex-shrink-0 mt-0.5" />
+                <span>Lakshmi Complex, 2nd floor, No 42, 3rd cross, Shanthi Nagar, Hosur, Tamil Nadu 635109</span>
+              </div>
+              <a href="tel:+919876543210" className="flex items-center gap-3 text-sm text-gray-400 hover:text-[#D97706] transition">
+                <Phone size={16} className="text-[#D97706] flex-shrink-0" />
+                +91 98765 43210
+              </a>
+              <a href="mailto:info@ketonefitness.com" className="flex items-center gap-3 text-sm text-gray-400 hover:text-[#D97706] transition">
+                <Mail size={16} className="text-[#D97706] flex-shrink-0" />
+                info@ketonefitness.com
+              </a>
+              <div className="flex items-center gap-3 text-sm text-gray-400">
+                <Clock size={16} className="text-[#D97706] flex-shrink-0" />
+                Mon – Sat: 5 AM – 10 PM
+              </div>
+            </address>
           </div>
 
         </div>
+      </div>
 
+      {/* Bottom Bar */}
+      <div className="border-t border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-gray-400">
+          <p>© {new Date().getFullYear()} Ketone Fitness. All Rights Reserved.</p>
+          <p>
+            Designed for fitness lovers in{" "}
+            <span className="text-[#D97706]">Hosur, Tamil Nadu</span>
+          </p>
+        </div>
       </div>
 
     </footer>

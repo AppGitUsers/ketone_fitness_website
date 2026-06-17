@@ -4,7 +4,7 @@ import gymBg from "../assets/images/bg2.jpg";
 function MembershipHero() {
   return (
     <section
-      className="relative py-32 overflow-hidden bg-cover bg-center bg-fixed"
+      className="relative py-20 sm:py-28 lg:py-32 overflow-hidden bg-cover bg-center"
       style={{
         backgroundImage: `url(${gymBg})`,
       }}
