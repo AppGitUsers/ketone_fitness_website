@@ -30,7 +30,11 @@ function Trainers() {
             >
               <img
                 src={trainer.image}
-                alt={`${trainer.name} - ${trainer.role} at Ketone Fitness`}
+                alt={`${trainer.name} – ${trainer.role} at Ketone Fitness`}
+                width={160}
+                height={160}
+                loading="lazy"
+                decoding="async"
                 className="w-32 h-32 sm:w-40 sm:h-40 object-cover rounded-full mx-auto mb-5 sm:mb-6 border-4 border-orange-500"
               />
               <h3 className="text-xl sm:text-2xl font-bold text-[#1F1F1F]">

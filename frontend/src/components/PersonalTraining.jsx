@@ -31,8 +31,12 @@ function PersonalTraining() {
           </div>
 
           <img
-            src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b"
+            src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=900&h=600&q=75&auto=format&fit=crop"
             alt="Personal trainer coaching a client at Ketone Fitness"
+            width={900}
+            height={600}
+            loading="lazy"
+            decoding="async"
             className="rounded-3xl w-full h-[280px] sm:h-[380px] lg:h-[450px] object-cover shadow-xl"
           />
 

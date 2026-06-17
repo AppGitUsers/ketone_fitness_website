@@ -40,8 +40,12 @@ function About() {
             whileHover={{ scale: 1.02 }}
           >
             <motion.img
-              src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b"
+              src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=900&h=700&q=75&auto=format&fit=crop"
               alt="Ketone Fitness gym trainer coaching a member"
+              width={900}
+              height={700}
+              loading="lazy"
+              decoding="async"
               initial={{ scale: 1.15, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
               transition={{ duration: 1 }}

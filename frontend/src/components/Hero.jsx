@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Play } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -26,16 +26,24 @@ const fadeUp = {
   },
 };
 
+const IMAGES = [Gym1, Gym2, Gym3, Gym4, Gym5, Gym6];
+
 function Hero() {
-  const images = [Gym1, Gym2, Gym3, Gym4, Gym5, Gym6];
   const [currentImage, setCurrentImage] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImage((prev) => (prev + 1) % images.length);
-    }, 3000);
+      setCurrentImage((prev) => (prev + 1) % IMAGES.length);
+    }, 3500);
     return () => clearInterval(interval);
-  }, [images.length]);
+  }, []);
+
+  // Preload the next image via JS so the crossfade is instant
+  useEffect(() => {
+    const nextIdx = (currentImage + 1) % IMAGES.length;
+    const img = new window.Image();
+    img.src = IMAGES[nextIdx];
+  }, [currentImage]);
 
   return (
     <section
@@ -43,11 +51,11 @@ function Hero() {
       style={{ backgroundImage: `url(${heroBg})` }}
     >
       {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/70"></div>
+      <div className="absolute inset-0 bg-black/70" aria-hidden="true"></div>
 
       {/* Glow Effects */}
-      <div className="absolute top-10 left-4 sm:top-20 sm:left-20 w-48 sm:w-96 h-48 sm:h-96 bg-orange-500/20 blur-[120px] rounded-full"></div>
-      <div className="absolute bottom-10 right-4 sm:bottom-20 sm:right-20 w-48 sm:w-96 h-48 sm:h-96 bg-yellow-500/20 blur-[120px] rounded-full"></div>
+      <div className="absolute top-10 left-4 sm:top-20 sm:left-20 w-48 sm:w-96 h-48 sm:h-96 bg-orange-500/20 blur-[120px] rounded-full" aria-hidden="true"></div>
+      <div className="absolute bottom-10 right-4 sm:bottom-20 sm:right-20 w-48 sm:w-96 h-48 sm:h-96 bg-yellow-500/20 blur-[120px] rounded-full" aria-hidden="true"></div>
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
@@ -123,35 +131,43 @@ function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Right Image Slider — hidden on small mobile, shown from md up */}
+          {/* Right Image Slider — hidden on small mobile */}
           <div className="relative hidden md:block">
-            <div className="absolute inset-0 bg-[#D97706] rounded-[40px] rotate-6 opacity-20"></div>
+            <div className="absolute inset-0 bg-[#D97706] rounded-[40px] rotate-6 opacity-20" aria-hidden="true"></div>
 
             <motion.div
               animate={{ y: [0, -12, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               className="relative w-full h-[350px] sm:h-[450px] lg:h-[580px] rounded-[40px] overflow-hidden shadow-2xl border border-white/10"
             >
-              {images.map((image, index) => (
-                <img
-                  key={index}
-                  src={image}
-                  alt={`Ketone Fitness gym ${index + 1}`}
-                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-                    currentImage === index ? "opacity-100" : "opacity-0"
-                  }`}
+              {/* AnimatePresence: only ever 1–2 images in DOM */}
+              <AnimatePresence mode="sync" initial={false}>
+                <motion.img
+                  key={currentImage}
+                  src={IMAGES[currentImage]}
+                  alt={`Ketone Fitness gym – view ${currentImage + 1}`}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.9 }}
+                  className="absolute inset-0 w-full h-full object-cover"
+                  loading={currentImage === 0 ? "eager" : "lazy"}
+                  decoding="async"
+                  fetchPriority={currentImage === 0 ? "high" : "auto"}
                 />
-              ))}
+              </AnimatePresence>
             </motion.div>
 
             {/* Slider Dots */}
-            <div className="absolute bottom-24 left-1/2 -translate-x-1/2 flex gap-2">
-              {images.map((_, index) => (
-                <div
+            <div className="absolute bottom-24 left-1/2 -translate-x-1/2 flex gap-2" aria-hidden="true">
+              {IMAGES.map((_, index) => (
+                <button
                   key={index}
+                  onClick={() => setCurrentImage(index)}
                   className={`h-2.5 rounded-full transition-all ${
                     currentImage === index ? "bg-[#D97706] w-7" : "bg-white/60 w-2.5"
                   }`}
+                  aria-label={`Go to slide ${index + 1}`}
                 />
               ))}
             </div>

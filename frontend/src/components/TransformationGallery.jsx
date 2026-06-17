@@ -177,7 +177,9 @@ function TransformationGallery() {
               <div className="relative overflow-hidden">
                 <motion.img
                   src={item.image}
-                  alt={item.name}
+                  alt={`${item.name} – ${item.duration} body transformation at Ketone Fitness`}
+                  loading="lazy"
+                  decoding="async"
                   whileHover={{ scale: 1.08 }}
                   transition={{ duration: 0.4 }}
                   className="w-full h-auto object-contain bg-white"

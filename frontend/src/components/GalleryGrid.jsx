@@ -1,10 +1,10 @@
 const images = [
-  { src: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48", alt: "Modern gym equipment at Ketone Fitness" },
-  { src: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b", alt: "Personal trainer coaching a member" },
-  { src: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438", alt: "Strength training session at the gym" },
-  { src: "https://images.unsplash.com/photo-1546483875-ad9014c88eba", alt: "Weight training area at Ketone Fitness" },
-  { src: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61", alt: "Cardio workout session" },
-  { src: "https://images.unsplash.com/photo-1518611012118-696072aa579a", alt: "Group fitness class at Ketone Fitness" },
+  { src: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=700&h=500&q=75&auto=format&fit=crop", alt: "Modern gym equipment at Ketone Fitness" },
+  { src: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=700&h=500&q=75&auto=format&fit=crop", alt: "Personal trainer coaching a member" },
+  { src: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=700&h=500&q=75&auto=format&fit=crop", alt: "Strength training session at the gym" },
+  { src: "https://images.unsplash.com/photo-1546483875-ad9014c88eba?w=700&h=500&q=75&auto=format&fit=crop", alt: "Weight training area at Ketone Fitness" },
+  { src: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=700&h=500&q=75&auto=format&fit=crop", alt: "Cardio workout session" },
+  { src: "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=700&h=500&q=75&auto=format&fit=crop", alt: "Group fitness class at Ketone Fitness" },
 ];
 
 function GalleryGrid() {
@@ -23,11 +23,14 @@ function GalleryGrid() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {images.map((image, index) => (
-            <div key={index} className="overflow-hidden rounded-2xl sm:rounded-3xl">
+            <div key={index} className="overflow-hidden rounded-2xl sm:rounded-3xl bg-gray-100">
               <img
                 src={image.src}
                 alt={image.alt}
+                width={700}
+                height={500}
                 loading="lazy"
+                decoding="async"
                 className="w-full h-56 sm:h-72 lg:h-80 object-cover hover:scale-110 transition duration-500"
               />
             </div>
