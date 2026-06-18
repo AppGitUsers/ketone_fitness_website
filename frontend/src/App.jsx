@@ -24,7 +24,7 @@ function App() {
     <Suspense fallback={<PageLoader />}>
       <Routes>
         <Route path="/"               element={<Home />} />
-        <Route path="/Admin"          element={<AdminDashboard />} />
+        <Route path="/admin"          element={<AdminDashboard />} />
         <Route path="/transformations" element={<Transformations />} />
         <Route path="/gallery"        element={<Gallery />} />
         <Route path="/membership"     element={<Membership />} />
