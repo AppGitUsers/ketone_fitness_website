@@ -83,40 +83,40 @@ function TransformationStats() {
         </motion.div>
 
         {/* Stats Grid */}
-        <div
-          ref={ref}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-8"
-        >
-          {stats.map((item, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.6,
-                delay: index * 0.15,
-              }}
-              viewport={{ once: true }}
-              whileHover={{
-                y: -15,
-                scale: 1.08,
-              }}
-              className="relative bg-white/5 backdrop-blur-lg border border-white/10 rounded-3xl p-8 text-center overflow-hidden shadow-lg"
-            >
-              {/* Glow Effect */}
-              <div className="absolute -top-10 -right-10 w-24 h-24 bg-orange-300/30 rounded-full blur-2xl" />
+          <div
+            ref={ref}
+            className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6"
+          >
+            {stats.map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.6,
+                  delay: index * 0.15,
+                }}
+                viewport={{ once: true }}
+                whileHover={{
+                  y: -8,
+                  scale: 1.03,
+                }}
+                className="relative bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-5 sm:p-6 text-center overflow-hidden shadow-lg"
+              >
+                {/* Glow Effect */}
+                <div className="absolute -top-10 -right-10 w-20 h-20 bg-orange-300/20 rounded-full blur-2xl" />
 
-              <h3 className="text-5xl lg:text-6xl font-black text-orange-400 drop-shadow-lg">
-                <Counter end={item.number} inView={inView} />
-                {item.suffix}
-              </h3>
+                <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black text-orange-400">
+                  <Counter end={item.number} inView={inView} />
+                  {item.suffix}
+                </h3>
 
-              <p className="text-gray-300 mt-3 font-medium">
-                {item.label}
-              </p>
-            </motion.div>
-          ))}
-        </div>
+                <p className="text-xs sm:text-sm lg:text-base text-gray-300 mt-2 font-medium">
+                  {item.label}
+                </p>
+              </motion.div>
+            ))}
+          </div>
       </div>
     </section>
   );
