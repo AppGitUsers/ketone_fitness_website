@@ -114,3 +114,9 @@ CORS_ALLOWED_ORIGINS = [
     os.getenv("FRONTEND_URL"),
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://ketonefitnesshosur.com",
+    "https://www.ketonefitnesshosur.com",
+]
+
+CORS_ALLOW_CREDENTIALS = True
