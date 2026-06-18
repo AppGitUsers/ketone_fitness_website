@@ -115,8 +115,8 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://ketonefitnesshosur.com",
-    "https://www.ketonefitnesshosur.com",
+    "https://ketonefitnesshosur.in",
+    "https://www.ketonefitnesshosur.in",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
