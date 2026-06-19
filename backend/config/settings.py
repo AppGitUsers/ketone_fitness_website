@@ -111,7 +111,8 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / "staticfiles"
 CORS_ALLOWED_ORIGINS = [
-    os.getenv("FRONTEND_URL"),
+    "https://ketonefitnesshosur.in",
+    "https://www.ketonefitnesshosur.in",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
