@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { LogOut } from "lucide-react";
 import { getEnquiries, deleteEnquiry, updateEnquiryStatus } from "../api/api";
 
 const AdminDashboard = () => {
@@ -93,19 +94,22 @@ const AdminDashboard = () => {
 
         {/* HEADER */}
         <div className="relative text-center mb-10">
-          <h1 className="text-4xl font-bold">
+          <h1 className="text-2xl sm:text-4xl font-bold">
             🏋️ Fitness Admin Dashboard
           </h1>
-          <p className="text-gray-400 mt-2">
+          <p className="text-gray-400 mt-2 text-sm sm:text-base">
             Manage customer enquiries and follow-ups
           </p>
 
-          {/* LOGOUT BUTTON */}
+          {/* LOGOUT — always right, icon only on mobile to avoid overlap */}
           <button
             onClick={handleLogout}
-            className="absolute right-0 top-1/2 -translate-y-1/2 bg-red-600 hover:bg-red-700 px-5 py-2.5 rounded-xl font-semibold text-sm hover:scale-105 transition-all duration-200 cursor-pointer"
+            className="absolute right-0 top-1/2 -translate-y-1/2 bg-red-600 hover:bg-red-700 px-2 py-2 sm:px-5 sm:py-2.5 rounded-xl font-semibold text-sm hover:scale-105 transition-all duration-200 cursor-pointer"
           >
-            🚪 Logout
+            <LogOut size={16} className="sm:hidden" />
+            <span className="hidden sm:flex items-center gap-2">
+              <LogOut size={16} /> Logout
+            </span>
           </button>
         </div>
 
