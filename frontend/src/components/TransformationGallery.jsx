@@ -41,37 +41,31 @@ function TransformationGallery() {
   const transformations = [
     {
       name: "Arun Kumar",
-      result: "Amazing Result",
       duration: "3 Months",
       image: transformation1,
     },
     {
       name: "Manoj",
-      result: "Amazing Result",
       duration: "4 Months",
       image: transformation2,
     },
     {
       name: "Ram",
-      result: "Amazing Result",
       duration: "5 Months",
       image: transformation3,
     },
     {
       name: "vijay",
-      result: "Amazing Result",
       duration: "6 Months",
       image: transformation4,
     },
     {
       name: "Ajith",
-      result: "Amazing Result",
       duration: "4 Months",
       image: transformation5,
     },
     {
       name: "Surya",
-      result: "Amazing Result",
       duration: "7 Months",
       image: transformation6,
     },
@@ -83,19 +77,16 @@ function TransformationGallery() {
     // },
     {
       name: "Dhanush",
-      result: "Amazing Result",
       duration: "6 Months",
       image: transformation8,
     },
     {
       name: "Vishal",
-      result: "Amazing Result",
       duration: "4 Months",
       image: transformation9,
     },
     {
       name: "Sathya",
-      result: "Amazing Result",
       duration: "8 Months",
       image: transformation10,
     },
@@ -162,9 +153,9 @@ function TransformationGallery() {
                   className="w-full h-80 object-cover"
                 />
 
-                <span className="absolute top-4 left-4 bg-orange-500 text-white px-4 py-2 rounded-full text-xs font-semibold shadow-lg">
+                {/* <span className="absolute top-4 left-4 bg-orange-500 text-white px-4 py-2 rounded-full text-xs font-semibold shadow-lg">
                   TRANSFORMATION
-                </span>
+                </span> */}
               </div>
 
               {/* Info */}
