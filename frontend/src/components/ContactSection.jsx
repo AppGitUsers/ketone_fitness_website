@@ -1,4 +1,4 @@
-import {Phone,Mail,MapPin,Clock,} from "lucide-react";
+﻿import {Phone,Mail,MapPin,Clock,} from "lucide-react";
 
 import {FaWhatsapp,} from "react-icons/fa";
 
@@ -19,6 +19,7 @@ import { createEnquiry } from "../api/api";
 
   const [showSuccess, setShowSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [formError, setFormError] = useState("");
 
     // ✅ HANDLE CHANGE
     const handleChange = (e) => {
@@ -33,11 +34,10 @@ import { createEnquiry } from "../api/api";
     e.preventDefault();
 
     setLoading(true);
+    setFormError("");
 
     try {
       const res = await createEnquiry(formData);
-
-      console.log(res.data);
 
       setShowSuccess(true);
 
@@ -57,7 +57,7 @@ import { createEnquiry } from "../api/api";
 
     } catch (error) {
       console.log(error);
-      alert("Error submitting form");
+      setFormError("Failed to submit. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -243,6 +243,10 @@ import { createEnquiry } from "../api/api";
                   />
                 </div>
 
+                {formError && (
+                  <p className="text-red-500 text-sm text-center">{formError}</p>
+                )}
+
                 <button
                   type="submit"
                   disabled={loading}
@@ -289,7 +293,7 @@ import { createEnquiry } from "../api/api";
                   <MapPin />
                   <div>
                     <h4 className="font-semibold">Address</h4>
-                    <p className="text-gray-400">Chennai, Tamil Nadu</p>
+                    <p className="text-gray-400">Hosur, Tamil Nadu</p>
                   </div>
                 </div>
 
@@ -305,10 +309,10 @@ import { createEnquiry } from "../api/api";
 
               <div className="mt-8 bg-green-500/10 border border-green-500/20 rounded-2xl p-5">
                 <h3 className="font-semibold mb-2">WhatsApp Support</h3>
-                <button className="bg-green-500 px-5 py-3 rounded-2xl flex items-center gap-2">
+                <a href="https://wa.me/919876543210" target="_blank" rel="noreferrer" className="inline-flex bg-green-500 hover:bg-green-600 transition px-5 py-3 rounded-2xl items-center gap-2">
                   <FaWhatsapp />
                   Chat Now
-                </button>
+                </a>
               </div>
 
             </div>

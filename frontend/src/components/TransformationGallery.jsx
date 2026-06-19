@@ -1,7 +1,5 @@
-import { motion } from "framer-motion";
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+﻿import { motion } from "framer-motion";
+
 
 import transformation1 from "../assets/transformations/transformation1.jpeg";
 import transformation2 from "../assets/transformations/transformation2.jpeg";
@@ -13,8 +11,6 @@ import transformation7 from "../assets/transformations/transformation7.jpeg";
 import transformation8 from "../assets/transformations/transformation8.jpeg";
 import transformation9 from "../assets/transformations/transformation9.jpeg";
 import transformation10 from "../assets/transformations/transformation10.jpeg";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const container = {
   hidden: {},
@@ -42,25 +38,6 @@ const fadeUp = {
 };
 
 function TransformationGallery() {
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(".gallery-card", {
-        opacity: 0,
-        y: 80,
-        duration: 1,
-        stagger: 0.15,
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-        },
-      });
-    });
-
-    return () => ctx.revert();
-  }, []);
-
   const transformations = [
     {
       name: "Arun Kumar",
@@ -132,7 +109,7 @@ function TransformationGallery() {
         <div className="absolute bottom-10 right-10 w-72 h-72 bg-orange-400 blur-3xl rounded-full" />
       </div>
 
-      <div ref={sectionRef} className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -182,7 +159,7 @@ function TransformationGallery() {
                   decoding="async"
                   whileHover={{ scale: 1.08 }}
                   transition={{ duration: 0.4 }}
-                  className="w-full h-auto object-contain bg-white"
+                  className="w-full h-80 object-cover"
                 />
 
                 <span className="absolute top-4 left-4 bg-orange-500 text-white px-4 py-2 rounded-full text-xs font-semibold shadow-lg">

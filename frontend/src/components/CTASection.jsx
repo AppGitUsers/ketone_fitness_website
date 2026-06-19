@@ -1,49 +1,24 @@
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
 
 function CTASection() {
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    gsap.fromTo(
-      sectionRef.current,
-      { opacity: 0, y: 80, scale: 0.95 },
-      {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-        },
-      }
-    );
-  }, []);
-
   return (
     <section className="py-16 sm:py-20 lg:py-24 bg-white relative overflow-hidden">
 
       {/* Background Glow */}
-      <div className="absolute inset-0 opacity-30">
+      <div className="absolute inset-0 opacity-30 pointer-events-none">
         <div className="absolute top-10 left-10 w-72 h-72 bg-orange-400 blur-3xl rounded-full animate-pulse" />
         <div className="absolute bottom-10 right-10 w-72 h-72 bg-orange-500 blur-3xl rounded-full animate-pulse" />
       </div>
 
-      <div ref={sectionRef} className="max-w-7xl mx-auto px-4 sm:px-6 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative">
         <motion.div
-          initial={{ scale: 0.9, opacity: 0 }}
+          initial={{ scale: 0.95, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="bg-gradient-to-r from-orange-500 to-orange-600 rounded-[30px] sm:rounded-[40px] p-7 sm:p-10 lg:p-16 text-center text-white shadow-2xl"
+          transition={{ duration: 0.7, ease: [0.25, 0.8, 0.25, 1] }}
+          className="bg-linear-to-r from-orange-500 to-orange-600 rounded-[30px] sm:rounded-[40px] p-7 sm:p-10 lg:p-16 text-center text-white shadow-2xl"
         >
           <span className="inline-block bg-white/20 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold mb-4 sm:mb-6">
             START TODAY
@@ -76,7 +51,7 @@ function CTASection() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-full sm:w-auto border border-white px-7 sm:px-8 py-3 sm:py-4 rounded-full font-semibold hover:bg-white hover:text-orange-600 transition shadow-lg cursor-pointer text-sm sm:text-base"
+                className="w-full sm:w-auto border border-white px-7 sm:px-8 py-3 sm:py-4 rounded-full font-semibold hover:bg-white hover:text-orange-600 transition-colors shadow-lg cursor-pointer text-sm sm:text-base"
               >
                 Free Trial
               </motion.button>

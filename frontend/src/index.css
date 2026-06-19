@@ -21,15 +21,14 @@ body {
   overflow-x: hidden;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Smooth transitions everywhere */
-* {
+/* Box sizing only — no transition on every element (causes scroll jank) */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease,
-    border-color 0.3s ease;
 }
 
 /* Images */
@@ -38,61 +37,40 @@ img {
   display: block;
 }
 
-/* Buttons */
-button {
-  cursor: pointer;
-  transition: all 0.3s ease;
+/* GPU-accelerate each section so Framer Motion animations composite on the GPU */
+section {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
-button:hover {
-  transform: translateY(-2px);
-}
-
-/* Links */
-a {
-  transition: all 0.3s ease;
-}
-
-/* Hide scrollbar but keep scrolling */
+/* Scrollbar */
 ::-webkit-scrollbar {
-  width: 7px;
+  width: 6px;
 }
-
 ::-webkit-scrollbar-track {
   background: #f1ede6;
 }
-
 ::-webkit-scrollbar-thumb {
   background: #D97706;
   border-radius: 20px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
   background: #b45309;
 }
 
-/* Text selection color */
+/* Text selection */
 ::selection {
   background: #D97706;
   color: white;
 }
 
-/* Smooth card hover */
-.card-hover {
-  transition: all 0.35s ease;
-}
-
-.card-hover:hover {
-  transform: translateY(-8px);
-}
-
-/* Fade animation */
+/* Fade animation utility */
 @keyframes fadeUp {
   from {
     opacity: 0;
     transform: translateY(40px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);

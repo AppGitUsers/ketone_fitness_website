@@ -1,4 +1,7 @@
+﻿import { useNavigate } from "react-router-dom";
+
 function FeaturedTransformations() {
+  const navigate = useNavigate();
   const transformations = [
     {
       name: "Arun Kumar",
@@ -114,7 +117,7 @@ function FeaturedTransformations() {
         {/* CTA */}
         <div className="text-center mt-12">
 
-          <button className="bg-[#D97706] hover:bg-[#c26a05] text-white px-8 py-4 rounded-full font-semibold transition">
+          <button onClick={() => navigate("/transformations")} className="bg-[#D97706] hover:bg-[#c26a05] text-white px-8 py-4 rounded-full font-semibold transition cursor-pointer">
             View All Transformations
           </button>
 

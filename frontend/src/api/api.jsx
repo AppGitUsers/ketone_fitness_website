@@ -2,6 +2,10 @@ import axios from "axios";
 
 const API_URL = import.meta.env.VITE_API_BASE;
 
+export const adminLogin = async (username, password) => {
+  return await axios.post(`${API_URL}/api/admin/login/`, { username, password });
+};
+
 export const getEnquiries = async () => {
   return await axios.get(`${API_URL}/api/enquiries/`);
 };

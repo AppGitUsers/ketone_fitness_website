@@ -1,10 +1,20 @@
 import { useEffect, useState } from "react";
-import {getEnquiries,deleteEnquiry,updateEnquiryStatus,} from "../api/api";
+import { useNavigate } from "react-router-dom";
+import { getEnquiries, deleteEnquiry, updateEnquiryStatus } from "../api/api";
 
-  const AdminDashboard = () => {
-    const [enquiries, setEnquiries] = useState([]);
-    const [search, setSearch] = useState("");
-    const [loading, setLoading] = useState(true);
+const AdminDashboard = () => {
+  const [enquiries, setEnquiries] = useState([]);
+  const [search, setSearch] = useState("");
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!localStorage.getItem("adminLoggedIn")) {
+      navigate("/admin-login");
+      return;
+    }
+    fetchEnquiries();
+  }, []);
 
   // FETCH DATA
   const fetchEnquiries = async () => {
@@ -19,15 +29,14 @@ import {getEnquiries,deleteEnquiry,updateEnquiryStatus,} from "../api/api";
     }
   };
 
-  useEffect(() => {
-    fetchEnquiries();
-  }, []);
+  // LOGOUT
+  const handleLogout = () => {
+    localStorage.removeItem("adminLoggedIn");
+    navigate("/admin-login");
+  };
 
   // UPDATE STATUS
-  const handleStatusUpdate = async (
-    id,
-    status
-  ) => {
+  const handleStatusUpdate = async (id, status) => {
     try {
       await updateEnquiryStatus(id, status);
       fetchEnquiries();
@@ -36,7 +45,7 @@ import {getEnquiries,deleteEnquiry,updateEnquiryStatus,} from "../api/api";
     }
   };
 
-    // DELETE
+  // DELETE
   const handleDelete = async (id) => {
     try {
       await deleteEnquiry(id);
@@ -49,16 +58,20 @@ import {getEnquiries,deleteEnquiry,updateEnquiryStatus,} from "../api/api";
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-black text-white">
-        <h1 className="text-2xl">Loading Enquiries...</h1>
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-10 h-10 border-4 border-[#D97706] border-t-transparent rounded-full animate-spin" />
+          <h1 className="text-2xl">Loading Enquiries...</h1>
+        </div>
       </div>
     );
   }
 
   // SEARCH
-  const filtered = enquiries.filter((item) =>
-    item.full_name?.toLowerCase().includes(search.toLowerCase()) ||
-    item.email?.toLowerCase().includes(search.toLowerCase()) ||
-    item.mobile_number?.includes(search)
+  const filtered = enquiries.filter(
+    (item) =>
+      item.full_name?.toLowerCase().includes(search.toLowerCase()) ||
+      item.email?.toLowerCase().includes(search.toLowerCase()) ||
+      item.mobile_number?.includes(search)
   );
 
   const getStatusColor = (status) => {
@@ -79,13 +92,21 @@ import {getEnquiries,deleteEnquiry,updateEnquiryStatus,} from "../api/api";
       <div className="max-w-7xl mx-auto">
 
         {/* HEADER */}
-        <div className="text-center mb-10">
+        <div className="relative text-center mb-10">
           <h1 className="text-4xl font-bold">
             🏋️ Fitness Admin Dashboard
           </h1>
           <p className="text-gray-400 mt-2">
             Manage customer enquiries and follow-ups
           </p>
+
+          {/* LOGOUT BUTTON */}
+          <button
+            onClick={handleLogout}
+            className="absolute right-0 top-1/2 -translate-y-1/2 bg-red-600 hover:bg-red-700 px-5 py-2.5 rounded-xl font-semibold text-sm hover:scale-105 transition-all duration-200 cursor-pointer"
+          >
+            🚪 Logout
+          </button>
         </div>
 
         {/* SEARCH */}
@@ -111,9 +132,7 @@ import {getEnquiries,deleteEnquiry,updateEnquiryStatus,} from "../api/api";
 
           <div className="bg-white/10 p-5 rounded-xl text-center">
             <h3 className="text-gray-400">Total Leads</h3>
-            <p className="text-3xl font-bold">
-              {enquiries.length}
-            </p>
+            <p className="text-3xl font-bold">{enquiries.length}</p>
           </div>
 
           <div className="bg-white/10 p-5 rounded-xl text-center">
@@ -132,33 +151,21 @@ import {getEnquiries,deleteEnquiry,updateEnquiryStatus,} from "../api/api";
           <div className="bg-white/10 p-5 rounded-xl text-center">
             <h3 className="text-gray-400">Pending</h3>
             <p className="text-3xl font-bold text-amber-200">
-             {
-                enquiries.filter(
-                  (e) => e.status === "Pending"
-                ).length
-              }
+              {enquiries.filter((e) => e.status === "Pending").length}
             </p>
           </div>
 
           <div className="bg-white/10 p-5 rounded-xl text-center">
             <h3 className="text-gray-400">Called</h3>
             <p className="text-3xl font-bold text-blue-400">
-              {
-                enquiries.filter(
-                  (e) => e.status === "Called"
-                ).length
-              }
+              {enquiries.filter((e) => e.status === "Called").length}
             </p>
           </div>
 
           <div className="bg-white/10 p-5 rounded-xl text-center">
             <h3 className="text-gray-400">Joined</h3>
             <p className="text-3xl font-bold text-green-400">
-              {
-                enquiries.filter(
-                  (e) => e.status === "Joined"
-                ).length
-              }
+              {enquiries.filter((e) => e.status === "Joined").length}
             </p>
           </div>
 
@@ -209,9 +216,7 @@ import {getEnquiries,deleteEnquiry,updateEnquiryStatus,} from "../api/api";
 
               {/* MESSAGE */}
               <div className="mt-3">
-                <p className="text-gray-400 text-sm">
-                  {item.message}
-                </p>
+                <p className="text-gray-400 text-sm">{item.message}</p>
               </div>
 
               {/* STATUS DROPDOWN */}
@@ -222,12 +227,7 @@ import {getEnquiries,deleteEnquiry,updateEnquiryStatus,} from "../api/api";
 
                 <select
                   value={item.status || "Pending"}
-                  onChange={(e) =>
-                    handleStatusUpdate(
-                      item.id,
-                      e.target.value
-                    )
-                  }
+                  onChange={(e) => handleStatusUpdate(item.id, e.target.value)}
                   className="w-full bg-gray-800 border border-gray-700 rounded-lg p-2 text-sm"
                 >
                   <option value="Pending">Pending</option>
@@ -239,9 +239,7 @@ import {getEnquiries,deleteEnquiry,updateEnquiryStatus,} from "../api/api";
 
               {/* DATE */}
               <p className="text-[11px] text-gray-500 mt-4">
-                {new Date(
-                  item.created_at
-                ).toLocaleString()}
+                {new Date(item.created_at).toLocaleString()}
               </p>
 
             </div>

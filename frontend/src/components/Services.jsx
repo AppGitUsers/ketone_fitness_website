@@ -1,4 +1,4 @@
-import {
+﻿import {
   Dumbbell,
   Activity,
   HeartPulse,
@@ -8,11 +8,6 @@ import {
 } from "lucide-react";
 
 import { motion } from "framer-motion";
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
 
 // ANIMATIONS
 const container = {
@@ -38,24 +33,6 @@ const fadeUp = {
 };
 
 function Services() {
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    gsap.fromTo(
-      sectionRef.current.children,
-      { opacity: 0, y: 80 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        stagger: 0.2,
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-        },
-      }
-    );
-  }, []);
 
   const services = [
     {
@@ -105,7 +82,7 @@ function Services() {
         <div className="absolute bottom-10 right-10 w-72 h-72 bg-orange-400 blur-3xl rounded-full" />
       </div>
 
-      <div ref={sectionRef} className="max-w-7xl mx-auto px-6 relative">
+      <div className="max-w-7xl mx-auto px-6 relative">
 
         {/* Heading */}
         <div className="text-center mb-16">

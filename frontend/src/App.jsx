@@ -1,11 +1,13 @@
 import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
+import ScrollToTop from "./components/ScrollToTop";
 
 // Home loads eagerly — it's the entry point and needs to be fast
 import Home from "./pages/Home";
 
 // All other pages are code-split: their JS only downloads when the user navigates there
 const AdminDashboard  = lazy(() => import("./pages/AdminDashboard"));
+const AdminLogin      = lazy(() => import("./pages/AdminLogin"));
 const Transformations = lazy(() => import("./pages/Transformations"));
 const Gallery         = lazy(() => import("./pages/Gallery"));
 const Membership      = lazy(() => import("./pages/Membership"));
@@ -22,8 +24,10 @@ function PageLoader() {
 function App() {
   return (
     <Suspense fallback={<PageLoader />}>
+      <ScrollToTop />
       <Routes>
         <Route path="/"               element={<Home />} />
+        <Route path="/admin-login"     element={<AdminLogin />} />
         <Route path="/admin"          element={<AdminDashboard />} />
         <Route path="/transformations" element={<Transformations />} />
         <Route path="/gallery"        element={<Gallery />} />
