@@ -24,10 +24,9 @@ function GoogleMap() {
           </h3>
 
           <p className="text-gray-600 mt-3">
-            Lakshmi Complex, 2nd floor, <br />
-            No 42, 3rd cross, opp. to Dhanam store, <br />
-            Shanthi Nagar, Shanthi Nagar East, <br />
-            Hosur, Tamil Nadu 635109
+            No 42, Lakshmi Complex, 2nd floor, 3rd cross, <br />
+            Shanthi Nagar East, Opp Dhanam Store, <br />
+            Near Raghavendra Theatre, Hosur 635109
           </p>
 
           <span className="inline-block mt-5 text-[#D97706] font-semibold">

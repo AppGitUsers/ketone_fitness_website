@@ -290,7 +290,7 @@ import { createEnquiry } from "../api/api";
                   <MapPin />
                   <div>
                     <h4 className="font-semibold">Address</h4>
-                    <p className="text-gray-400">Hosur, Tamil Nadu</p>
+                    <p className="text-gray-400">No 42, Lakshmi Complex, 2nd floor, 3rd cross, Shanthi Nagar East, Opp Dhanam Store, Near Raghavendra Theatre, Hosur 635109</p>
                   </div>
                 </div>
 

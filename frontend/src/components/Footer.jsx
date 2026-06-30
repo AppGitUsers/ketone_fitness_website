@@ -77,7 +77,7 @@ function Footer() {
             <address className="not-italic space-y-3">
               <div className="flex items-start gap-3 text-sm text-gray-400">
                 <MapPin size={16} className="text-[#D97706] flex-shrink-0 mt-0.5" />
-                <span>Lakshmi Complex, 2nd floor, No 42, 3rd cross, Shanthi Nagar, Hosur, Tamil Nadu 635109</span>
+                <span>No 42, Lakshmi Complex, 2nd floor, 3rd cross, Shanthi Nagar East, Opp Dhanam Store, Near Raghavendra Theatre, Hosur 635109</span>
               </div>
               <a href="tel:+917349075482" className="flex items-center gap-3 text-sm text-gray-400 hover:text-[#D97706] transition">
                 <Phone size={16} className="text-[#D97706] flex-shrink-0" />

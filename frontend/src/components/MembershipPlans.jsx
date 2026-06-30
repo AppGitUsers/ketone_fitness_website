@@ -25,7 +25,7 @@ function MembershipPlans() {
     {
       name: "12 Months",
       price: "₹9,999",
-      features: commonFeatures,
+      features: [...commonFeatures, "1.5 Months Extra Freeze Time"],
     },
     {
       name: "Couple Package",

@@ -61,7 +61,7 @@ function About() {
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
               whileHover={{ scale: 1.05 }}
             >
-              <h3 className="text-3xl sm:text-4xl font-bold">10+</h3>
+              <h3 className="text-3xl sm:text-4xl font-bold">5+</h3>
               <p className="text-xs sm:text-sm">Years Experience</p>
             </motion.div>
           </motion.div>
