@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-function LazyVideo({ src, title, className }) {
+function LazyVideo({ src, title, className, type }) {
   const [isVisible, setIsVisible] = useState(false);
   const containerRef = useRef(null);
 
@@ -26,18 +26,24 @@ function LazyVideo({ src, title, className }) {
     <div ref={containerRef}>
       {isVisible ? (
         <video
+          autoPlay
+          muted
+          loop
           controls
           preload="none"
           className={className}
           title={title}
           playsInline
         >
-          <source src={src} type="video/mp4" />
+          <source src={src} type={type || "video/mp4"} />
+          {(!type || type === "video/quicktime") && (
+            <source src={src} type="video/mp4" />
+          )}
           Your browser does not support video playback.
         </video>
       ) : (
         <div
-          className={`${className} bg-gradient-to-br from-gray-900 to-gray-800 flex items-center justify-center`}
+          className={`${className} bg-linear-to-br from-gray-900 to-gray-800 flex items-center justify-center`}
           aria-label={`Video: ${title} – scroll to load`}
         >
           <div className="text-center text-white select-none">
@@ -46,7 +52,7 @@ function LazyVideo({ src, title, className }) {
                 <path d="M8 5v14l11-7z" />
               </svg>
             </div>
-            <p className="text-sm text-gray-300 px-4 truncate max-w-[180px]">{title}</p>
+            <p className="text-sm text-gray-300 px-4 truncate max-w-45">{title}</p>
           </div>
         </div>
       )}

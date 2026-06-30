@@ -30,7 +30,7 @@ function Navbar() {
                 Ketone Fitness
               </h1>
               <p className="text-xs text-gray-500 hidden sm:block">
-                Transform Your Body
+                Flatten the Curve
               </p>
             </div>
           </Link>

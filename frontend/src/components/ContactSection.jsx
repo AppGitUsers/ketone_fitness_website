@@ -217,11 +217,8 @@ import { createEnquiry } from "../api/api";
                       <option value="">Select Service</option>
                       <option>Gym Membership</option>
                       <option>Personal Training</option>
-                      <option>Nutrition Coaching</option>
-                      <option>Weight Loss Program</option>
+                      <option>90 Days Transformation Package</option>
                       <option>Weight Gain Program</option>
-                      <option>Strength Training</option>
-                      <option>Group Fitness Classes</option>
                     </select>
                   </div>
 
@@ -277,7 +274,7 @@ import { createEnquiry } from "../api/api";
                   <Phone />
                   <div>
                     <h4 className="font-semibold">Phone</h4>
-                    <p className="text-gray-400">+91 91598 79015</p>
+                    <p className="text-gray-400">+91 73490 75482</p>
                   </div>
                 </div>
 
@@ -285,7 +282,7 @@ import { createEnquiry } from "../api/api";
                   <Mail />
                   <div>
                     <h4 className="font-semibold">Email</h4>
-                    <p className="text-gray-400">info@ketonefitness.com</p>
+                    <p className="text-gray-400">ketonefitnesshosur@gmail.com</p>
                   </div>
                 </div>
 
@@ -301,7 +298,7 @@ import { createEnquiry } from "../api/api";
                   <Clock />
                   <div>
                     <h4 className="font-semibold">Working Hours</h4>
-                    <p className="text-gray-400">Mon - Sat : 5 AM - 10 PM</p>
+                    <p className="text-gray-400">Mon - Sat: 5:30 AM - 10:00 PM</p>
                   </div>
                 </div>
 
@@ -309,7 +306,7 @@ import { createEnquiry } from "../api/api";
 
               <div className="mt-8 bg-green-500/10 border border-green-500/20 rounded-2xl p-5">
                 <h3 className="font-semibold mb-2">WhatsApp Support</h3>
-                <a href="https://wa.me/919159879015" target="_blank" rel="noreferrer" className="inline-flex bg-green-500 hover:bg-green-600 transition px-5 py-3 rounded-2xl items-center gap-2">
+                <a href="https://wa.me/917349075482" target="_blank" rel="noreferrer" className="inline-flex bg-green-500 hover:bg-green-600 transition px-5 py-3 rounded-2xl items-center gap-2">
                   <FaWhatsapp />
                   Chat Now
                 </a>

@@ -37,29 +37,34 @@ function TransformationStats() {
 
   const stats = [
     {
-      number: 500,
+      number: 50,
       suffix: "+",
-      label: "Success Stories",
+      label: "Successful Transformations",
     },
     {
-      number: 1000,
+      number: 1500,
+      suffix: "+",
+      label: "Total Members",
+    },
+    {
+      number: 299,
       suffix: "+",
       label: "Active Members",
     },
     {
       number: 95,
       suffix: "%",
-      label: "Goal Achievement",
+      label: "Goal Achieved",
     },
     {
-      number: 10,
+      number: 5,
       suffix: "+",
-      label: "Years Experience",
+      label: "Years of Experience",
     },
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-br from-[#111111] via-[#1A1A1A] to-[#111111] overflow-hidden relative">
+    <section className="py-24 bg-linear-to-br from-[#111111] via-[#1A1A1A] to-[#111111] overflow-hidden relative">
       {/* Background Glow */}
       <div className="absolute top-20 left-20 w-72 h-72 bg-orange-500/20 blur-[120px] rounded-full" />
       <div className="absolute bottom-20 right-20 w-72 h-72 bg-yellow-500/20 blur-[120px] rounded-full" />
@@ -85,7 +90,7 @@ function TransformationStats() {
         {/* Stats Grid */}
           <div
             ref={ref}
-            className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6"
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6"
           >
             {stats.map((item, index) => (
               <motion.div

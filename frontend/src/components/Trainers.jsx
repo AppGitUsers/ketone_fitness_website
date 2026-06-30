@@ -4,9 +4,8 @@ import trainer3 from "../assets/trainers/Trainer.jpg";
 
 function Trainers() {
   const trainers = [
-    { name: "John", role: "Strength Coach", image: trainer1 },
-    { name: "Priya", role: "Weight Loss Expert", image: trainer2 },
-    { name: "Rahul", role: "Personal Trainer", image: trainer3 },
+    { name: "Sagar Kumar", role: "Personal Trainer", image: trainer1 },
+    { name: "Ashok Kumar", role: "Fitness Coach", image: trainer2 },
   ];
 
   return (
@@ -22,7 +21,7 @@ function Trainers() {
           </h2>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid sm:grid-cols-2 gap-6 sm:gap-8 max-w-2xl mx-auto">
           {trainers.map((trainer, index) => (
             <div
               key={index}

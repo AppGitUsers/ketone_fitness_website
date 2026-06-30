@@ -3,32 +3,47 @@ import { useNavigate } from "react-router-dom";
 function MembershipPlans() {
   const navigate = useNavigate();
 
+  const commonFeatures = [
+    "Access to Both Floors",
+    "No Time Restrictions",
+    "Access to All Equipments",
+    "General Diet Plan",
+  ];
+
   const plans = [
     {
       name: "3 Months",
       price: "₹4,799",
-      features: ["Gym Access", "Locker Facility", "Free Assessment"],
+      features: commonFeatures,
     },
     {
       name: "6 Months",
       price: "₹7,499",
-      features: ["Gym Access", "Locker Facility", "Diet Consultation"],
+      features: commonFeatures,
       popular: true,
     },
     {
       name: "12 Months",
       price: "₹9,999",
-      features: ["Unlimited Access", "Diet Plan", "Priority Support"],
+      features: commonFeatures,
     },
     {
       name: "Couple Package",
       price: "₹15,000",
-      features: ["Gym Access", "Locker Facility", "Diet Consultation", "Access for 2 Members"],
+      features: [...commonFeatures, "Access for 2 Members"],
     },
     {
-      name: "Personal Training",
-      price: "₹6,000",
-      features: ["One-on-One Training", "Customized Workout Plan", "Progress Tracking"],
+      name: "90 Days Transformation Package",
+      price: null,
+      features: [
+        "Structured 90-Day Training Plan",
+        "Custom Nutrition & Meal Plan",
+        "Before & After Assessment",
+        "Weekly Progress Check-ins",
+        "Accountability & Coaching",
+        "Post-Program Guidance",
+      ],
+      highlight: true,
     },
   ];
 
@@ -56,11 +71,16 @@ function MembershipPlans() {
               key={index}
               className={`relative bg-[#F7F3EC] p-6 sm:p-8 rounded-3xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 ${
                 plan.popular ? "ring-2 ring-[#D97706]" : ""
-              }`}
+              } ${plan.highlight ? "ring-2 ring-orange-400" : ""}`}
             >
               {plan.popular && (
                 <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#D97706] text-white text-xs px-4 py-1 rounded-full font-semibold">
                   Most Popular
+                </span>
+              )}
+              {plan.highlight && (
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-orange-400 text-white text-xs px-4 py-1 rounded-full font-semibold">
+                  Best Results
                 </span>
               )}
 
@@ -68,14 +88,16 @@ function MembershipPlans() {
                 {plan.name}
               </h3>
 
-              <p className="text-4xl sm:text-5xl font-bold text-[#D97706] my-5 sm:my-6">
-                {plan.price}
-              </p>
+              {plan.price && (
+                <p className="text-4xl sm:text-5xl font-bold text-[#D97706] my-5 sm:my-6">
+                  {plan.price}
+                </p>
+              )}
 
               <ul className="space-y-3 mb-7 sm:mb-8">
                 {plan.features.map((item, i) => (
-                  <li key={i} className="flex items-center text-gray-700 text-sm sm:text-base">
-                    <span className="text-green-600 mr-2 font-bold">✓</span>
+                  <li key={i} className="flex items-center text-sm sm:text-base text-gray-700">
+                    <span className="text-green-400 mr-2 font-bold">✓</span>
                     {item}
                   </li>
                 ))}

@@ -70,10 +70,10 @@ function StatCard({ item }) {
 
 function Stats() {
   const stats = [
-    { icon: <Users size={40} />, number: 500, suffix: "+", title: "Active Members" },
-    { icon: <Trophy size={40} />, number: 50, suffix: "+", title: "Transformations" },
-    { icon: <Dumbbell size={40} />, number: 10, suffix: "+", title: "Certified Trainers" },
-    { icon: <Calendar size={40} />, number: 10, suffix: "+", title: "Years Experience" },
+    { icon: <Users size={40} />, number: 299, suffix: "+", title: "Active Members" },
+    { icon: <Trophy size={40} />, number: 25, suffix: "+", title: "Transformations" },
+    { icon: <Dumbbell size={40} />, number: 3, suffix: "+", title: "Certified Trainers" },
+    { icon: <Calendar size={40} />, number: 4, suffix: "+", title: "Years Experience" },
   ];
 
   return (

@@ -1,5 +1,6 @@
 import { CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
+import aboutImg from "../assets/images/about_us.jpg";
 
 const container = {
   hidden: {},
@@ -40,7 +41,7 @@ function About() {
             whileHover={{ scale: 1.02 }}
           >
             <motion.img
-              src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=900&h=700&q=75&auto=format&fit=crop"
+              src={aboutImg}
               alt="Ketone Fitness gym trainer coaching a member"
               width={900}
               height={700}

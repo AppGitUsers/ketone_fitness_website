@@ -3,7 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Play } from "lucide-react";
 import { Link } from "react-router-dom";
 
-import heroBg from "../assets/images/bg2.jpg";
+import heroBg from "../assets/images/bakground.jpeg";
+import mainVideo from "../assets/videos/main.mp4";
 import Gym1 from "../assets/images/img1.jpeg";
 import Gym2 from "../assets/images/img2.jpeg";
 import Gym3 from "../assets/images/img3.jpeg";
@@ -61,7 +62,7 @@ function Hero() {
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 
           {/* Left Content */}
-          <motion.div variants={container} initial="hidden" animate="show">
+          <motion.div variants={container} initial="hidden" animate="show" className="text-center lg:text-left">
             <motion.span
               variants={fadeUp}
               whileHover={{ scale: 1.05 }}
@@ -80,10 +81,17 @@ function Hero() {
             </motion.h1>
 
             <motion.p
+              variants={fadeUp}
+              className="text-orange-300 text-lg sm:text-xl font-semibold mt-2 tracking-wide"
+            >
+              Flatten the Curve
+            </motion.p>
+
+            <motion.p
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
-              className="text-gray-200 text-base sm:text-lg mt-5 sm:mt-6 max-w-xl leading-relaxed"
+              className="text-gray-200 text-base sm:text-lg mt-5 sm:mt-6 max-w-xl leading-relaxed mx-auto lg:mx-0"
             >
               Achieve your fitness goals with personalized training,
               modern equipment, and certified fitness experts.
@@ -95,7 +103,7 @@ function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8, duration: 0.6 }}
-              className="flex flex-wrap gap-3 sm:gap-4 mt-7 sm:mt-8"
+              className="flex flex-wrap justify-center lg:justify-start gap-3 sm:gap-4 mt-7 sm:mt-8"
             >
               <Link to="/contact">
                 <button className="bg-[#D97706] hover:bg-[#c26a05] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold flex items-center gap-2 transition-all duration-300 shadow-lg hover:shadow-orange-500/30 text-sm sm:text-base">
@@ -117,9 +125,9 @@ function Hero() {
               className="grid grid-cols-3 gap-4 sm:gap-6 mt-10 sm:mt-12"
             >
               {[
-                { value: "500+", label: "Members" },
-                { value: "50+", label: "Transformations" },
-                { value: "10+", label: "Trainers" },
+                { value: "1500+", label: "Total Clients" },
+                { value: "299+", label: "Active Members" },
+                { value: "3+", label: "Trainers" },
               ].map((stat, i) => (
                 <motion.div key={i} variants={fadeUp}>
                   <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#D97706]">
@@ -131,8 +139,8 @@ function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Right Image Slider — hidden on small mobile */}
-          <div className="relative hidden md:block">
+          {/* Right Image Slider — only show at lg where 2-column grid is active */}
+          <div className="relative hidden lg:block">
             <div className="absolute inset-0 bg-[#D97706] rounded-[40px] rotate-6 opacity-20" aria-hidden="true"></div>
 
             <motion.div
@@ -172,18 +180,24 @@ function Hero() {
               ))}
             </div>
 
-            {/* Floating Card */}
+            {/* Floating Video Card */}
             <motion.div
               animate={{ y: [0, -8, 0] }}
               transition={{ duration: 3, repeat: Infinity }}
-              className="absolute bottom-6 left-6 bg-white/95 backdrop-blur-md p-4 sm:p-5 rounded-2xl shadow-xl"
+              className="absolute bottom-6 left-6 bg-black rounded-2xl shadow-xl overflow-hidden w-44 sm:w-52"
             >
-              <h4 className="font-bold text-base sm:text-lg text-[#1F1F1F]">
-                Free Trial Available
-              </h4>
-              <p className="text-gray-500 text-xs sm:text-sm mt-1">
-                Start your fitness journey today.
-              </p>
+              <video
+                src={mainVideo}
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="w-full h-28 sm:h-32 object-cover"
+              />
+              <div className="px-3 py-2 bg-white/95">
+                <h4 className="font-bold text-sm text-[#1F1F1F]">Free Trial Available</h4>
+                <p className="text-gray-500 text-xs">Start your fitness journey today.</p>
+              </div>
             </motion.div>
           </div>
 

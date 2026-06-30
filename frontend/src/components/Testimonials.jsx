@@ -1,25 +1,13 @@
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
+import review1 from "../assets/reviews/review1.jpeg";
+import review2 from "../assets/reviews/review2.jpeg";
+import review3 from "../assets/reviews/review3.jpeg";
 
-const testimonials = [
-  {
-    name: "Arun Kumar",
-    role: "Member",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=112&h=112&q=75&auto=format&fit=crop&face",
-    review: "I lost 15kg in just 6 months. The trainers are highly supportive and the environment keeps me motivated every day.",
-  },
-  {
-    name: "Priya S",
-    role: "Member",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=112&h=112&q=75&auto=format&fit=crop&face",
-    review: "The best fitness center I have ever joined. The workout plans and nutrition guidance helped me achieve my goals.",
-  },
-  {
-    name: "Karthik R",
-    role: "Member",
-    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=112&h=112&q=75&auto=format&fit=crop&face",
-    review: "Excellent equipment, professional trainers, and a friendly atmosphere. Highly recommended for anyone serious about fitness.",
-  },
+const reviews = [
+  { img: review1, name: "Google Review", label: "Verified Member" },
+  { img: review2, name: "Google Review", label: "Verified Member" },
+  { img: review3, name: "Google Review", label: "Verified Member" },
 ];
 
 const containerVariants = {
@@ -59,7 +47,7 @@ function Testimonials() {
           </p>
         </motion.div>
 
-        {/* Testimonials Grid */}
+        {/* Reviews Grid */}
         <motion.div
           className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
           variants={containerVariants}
@@ -67,41 +55,39 @@ function Testimonials() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          {testimonials.map((item, index) => (
+          {reviews.map((review, index) => (
             <motion.div
               key={index}
               variants={cardVariants}
               whileHover={{ y: -10, scale: 1.03 }}
               transition={{ duration: 0.3 }}
-              className="bg-white p-6 sm:p-8 rounded-3xl shadow-sm hover:shadow-2xl border border-gray-100"
+              className="relative rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl border border-gray-100"
             >
-              {/* Stars */}
-              <div className="flex gap-1 mb-5 sm:mb-6">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={16} className="fill-[#D97706] text-[#D97706]" />
-                ))}
+              <img
+                src={review.img}
+                alt={`Review ${index + 1} – Ketone Fitness member`}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-cover"
+              />
+
+              {/* Top-right badge */}
+              <div className="absolute top-3 right-3 bg-[#D97706] text-white text-[10px] font-bold px-2.5 py-1 rounded-full shadow">
+                {review.name}
               </div>
 
-              {/* Review */}
-              <p className="text-gray-600 leading-relaxed mb-6 sm:mb-8 text-sm sm:text-base">
-                "{item.review}"
-              </p>
-
-              {/* User Info */}
-              <div className="flex items-center gap-4">
-                <img
-                  src={item.image}
-                  alt={`${item.name} – Ketone Fitness member`}
-                  width={56}
-                  height={56}
-                  loading="lazy"
-                  decoding="async"
-                  className="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover flex-shrink-0"
-                />
-                <div>
-                  <h4 className="font-bold text-[#1F1F1F] text-sm sm:text-base">{item.name}</h4>
-                  <p className="text-xs sm:text-sm text-gray-500">{item.role}</p>
-                </div>
+              {/* Bottom gradient overlay — stars + verified */}
+              <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/70 to-transparent px-4 py-4 flex items-center justify-between">
+                <span className="inline-flex items-center gap-1.5 bg-white/20 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1 rounded-full border border-white/30">
+                  <span className="w-1.5 h-1.5 rounded-full bg-green-400 inline-block" />
+                  {review.label}
+                </span>
+                <span className="flex items-center gap-0.5 bg-white/20 backdrop-blur-sm px-2.5 py-1 rounded-full border border-white/30">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={11} className="fill-[#D97706] text-[#D97706]" />
+                  ))}
+                  <span className="text-[10px] font-bold text-white ml-1">5.0</span>
+                </span>
               </div>
             </motion.div>
           ))}

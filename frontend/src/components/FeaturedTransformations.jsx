@@ -1,126 +1,109 @@
-﻿import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+import transformation1 from "../assets/transformations/transformation1.jpeg";
+import transformation2 from "../assets/transformations/transformation2.jpeg";
+import transformation3 from "../assets/transformations/transformation3.jpeg";
+
+const transformations = [
+  {
+    name: "Arun Kumar",
+    result: "Lost 15 KG in 3 Months",
+    duration: "3 Months",
+    image: transformation1,
+  },
+  {
+    name: "Manoj",
+    result: "Body Fat Reduced by 12%",
+    duration: "4 Months",
+    image: transformation2,
+  },
+  {
+    name: "Ram",
+    result: "Gained 8 KG Muscle Mass",
+    duration: "5 Months",
+    image: transformation3,
+  },
+];
 
 function FeaturedTransformations() {
   const navigate = useNavigate();
-  const transformations = [
-    {
-      name: "Arun Kumar",
-      result: "Lost 15 KG in 6 Months",
-      before:
-        "https://images.unsplash.com/photo-1517836357463-d25dfeac3438",
-      after:
-        "https://images.unsplash.com/photo-1534438327276-14e5300c3a48",
-    },
-    {
-      name: "Priya S",
-      result: "Body Fat Reduced by 12%",
-      before:
-        "https://images.unsplash.com/photo-1546483875-ad9014c88eba",
-      after:
-        "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61",
-    },
-    {
-      name: "Karthik R",
-      result: "Gained 8 KG Muscle Mass",
-      before:
-        "https://images.unsplash.com/photo-1518611012118-696072aa579a",
-      after:
-        "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b",
-    },
-  ];
 
   return (
     <section className="py-24 bg-[#F7F3EC]">
       <div className="max-w-7xl mx-auto px-6">
 
         {/* Heading */}
-        <div className="text-center mb-16">
-
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
           <span className="inline-block bg-orange-100 text-orange-600 px-4 py-2 rounded-full text-sm font-semibold mb-4">
             SUCCESS STORIES
           </span>
 
           <h2 className="text-4xl lg:text-5xl font-bold text-[#1F1F1F]">
-            Real Transformations,
-            Real Results
+            Real Transformations,<br />Real Results
           </h2>
 
           <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
             Our members have transformed their lives through
             consistency, dedication, and expert guidance.
           </p>
-
-        </div>
+        </motion.div>
 
         {/* Cards */}
         <div className="grid lg:grid-cols-3 gap-8">
-
           {transformations.map((item, index) => (
-            <div
+            <motion.div
               key={index}
-              className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.15 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -8, scale: 1.02 }}
+              className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300"
             >
-
-              {/* Before & After */}
-              <div className="grid grid-cols-2">
-
-                <div className="relative">
-                  <img
-                    src={item.before}
-                    alt="Before"
-                    className="h-64 w-full object-cover"
-                  />
-
-                  <span className="absolute top-3 left-3 bg-red-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
-                    BEFORE
-                  </span>
-                </div>
-
-                <div className="relative">
-                  <img
-                    src={item.after}
-                    alt="After"
-                    className="h-64 w-full object-cover"
-                  />
-
-                  <span className="absolute top-3 right-3 bg-green-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
-                    AFTER
-                  </span>
-                </div>
-
+              {/* Transformation Image */}
+              <div className="relative overflow-hidden">
+                <motion.img
+                  src={item.image}
+                  alt={`${item.name} – ${item.duration} transformation at Ketone Fitness`}
+                  loading="lazy"
+                  decoding="async"
+                  whileHover={{ scale: 1.06 }}
+                  transition={{ duration: 0.4 }}
+                  className="w-full h-72 object-cover"
+                />
+                <span className="absolute top-3 left-3 bg-orange-500 text-white px-3 py-1 rounded-full text-xs font-semibold shadow">
+                  TRANSFORMATION
+                </span>
               </div>
 
               {/* Content */}
               <div className="p-6">
-
-                <h3 className="text-2xl font-bold text-[#1F1F1F]">
-                  {item.name}
-                </h3>
-
-                <p className="text-[#D97706] font-semibold mt-2">
-                  {item.result}
+                <h3 className="text-xl font-bold text-[#1F1F1F]">{item.name}</h3>
+                <p className="text-[#D97706] font-semibold mt-1">{item.result}</p>
+                <p className="text-gray-500 text-sm mt-1">Duration: {item.duration}</p>
+                <p className="text-gray-600 text-sm mt-3">
+                  Through structured training and nutrition guidance, achieved
+                  remarkable fitness results and improved overall health.
                 </p>
-
-                <p className="text-gray-600 mt-4">
-                  Through structured training and nutrition
-                  guidance, this member achieved remarkable
-                  fitness results and improved overall health.
-                </p>
-
               </div>
-
-            </div>
+            </motion.div>
           ))}
-
         </div>
 
         {/* CTA */}
         <div className="text-center mt-12">
-
-          <button onClick={() => navigate("/transformations")} className="bg-[#D97706] hover:bg-[#c26a05] text-white px-8 py-4 rounded-full font-semibold transition cursor-pointer">
+          <button
+            onClick={() => navigate("/transformations")}
+            className="bg-[#D97706] hover:bg-[#c26a05] text-white px-8 py-4 rounded-full font-semibold transition cursor-pointer"
+          >
             View All Transformations
           </button>
-
         </div>
 
       </div>

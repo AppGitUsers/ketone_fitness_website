@@ -21,7 +21,13 @@ function PersonalTraining() {
             </p>
 
             <ul className="mt-6 space-y-3">
-              {["Customized Workout Plans", "Nutrition Guidance", "Progress Tracking", "Flexible Scheduling"].map((item, i) => (
+              {[
+                "One to One Training",
+                "Customised Workout Plan",
+                "Customised Diet Plan",
+                "Progress Review",
+                "Nutritional Guidance",
+              ].map((item, i) => (
                 <li key={i} className="flex items-center gap-3 text-sm sm:text-base text-gray-700">
                   <span className="text-green-600 font-bold">✓</span>
                   {item}
@@ -37,7 +43,7 @@ function PersonalTraining() {
             height={600}
             loading="lazy"
             decoding="async"
-            className="rounded-3xl w-full h-[280px] sm:h-[380px] lg:h-[450px] object-cover shadow-xl"
+            className="rounded-3xl w-full h-70 sm:h-95 lg:h-112.5 object-cover shadow-xl"
           />
 
         </div>

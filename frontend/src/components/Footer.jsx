@@ -29,16 +29,16 @@ function Footer() {
               modern equipment, and flexible membership plans.
             </p>
             <div className="flex items-center gap-3">
-              <a href="#" aria-label="Facebook" className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#D97706] flex items-center justify-center transition duration-300">
+              <a href="https://www.facebook.com/share/1Bxp1BczeB/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#D97706] flex items-center justify-center transition duration-300">
                 <FaFacebookF size={15} />
               </a>
-              <a href="#" aria-label="Instagram" className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#D97706] flex items-center justify-center transition duration-300">
+              <a href="https://www.instagram.com/_ketone_fitness?utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#D97706] flex items-center justify-center transition duration-300">
                 <FaInstagram size={15} />
               </a>
-              <a href="#" aria-label="YouTube" className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#D97706] flex items-center justify-center transition duration-300">
+              <a href="http://www.youtube.com/@ketonefitness5215" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#D97706] flex items-center justify-center transition duration-300">
                 <FaYoutube size={15} />
               </a>
-              <a href="#" aria-label="WhatsApp" className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#D97706] flex items-center justify-center transition duration-300">
+              <a href="https://wa.me/917349075482" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#D97706] flex items-center justify-center transition duration-300">
                 <FaWhatsapp size={15} />
               </a>
             </div>
@@ -79,17 +79,17 @@ function Footer() {
                 <MapPin size={16} className="text-[#D97706] flex-shrink-0 mt-0.5" />
                 <span>Lakshmi Complex, 2nd floor, No 42, 3rd cross, Shanthi Nagar, Hosur, Tamil Nadu 635109</span>
               </div>
-              <a href="tel:+919876543210" className="flex items-center gap-3 text-sm text-gray-400 hover:text-[#D97706] transition">
+              <a href="tel:+917349075482" className="flex items-center gap-3 text-sm text-gray-400 hover:text-[#D97706] transition">
                 <Phone size={16} className="text-[#D97706] flex-shrink-0" />
-                +91 98765 43210
+                +91 73490 75482
               </a>
-              <a href="mailto:info@ketonefitness.com" className="flex items-center gap-3 text-sm text-gray-400 hover:text-[#D97706] transition">
+              <a href="mailto:ketonefitnesshosur@gmail.com" className="flex items-center gap-3 text-sm text-gray-400 hover:text-[#D97706] transition">
                 <Mail size={16} className="text-[#D97706] flex-shrink-0" />
-                info@ketonefitness.com
+                ketonefitnesshosur@gmail.com
               </a>
               <div className="flex items-center gap-3 text-sm text-gray-400">
                 <Clock size={16} className="text-[#D97706] flex-shrink-0" />
-                Mon – Sat: 5 AM – 10 PM
+                Mon – Sat: 5:30 AM – 10:00 PM
               </div>
             </address>
           </div>

@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import transformBg from "../assets/images/bg2.jpg";
 
 function TransformationHero() {
   return (
@@ -9,11 +10,8 @@ function TransformationHero() {
         initial={{ scale: 1.1 }}
         animate={{ scale: 1 }}
         transition={{ duration: 2, ease: "easeOut" }}
-        className="absolute inset-0 bg-cover bg-[center_top] sm:bg-center bg-no-repeat"
-        style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438')",
-        }}
+        className="absolute inset-0 bg-cover bg-position-[center_top] sm:bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${transformBg})` }}
       />
 
       {/* DARK OVERLAY */}

@@ -3,6 +3,7 @@ import Hero from "../components/Hero";
 import About from "../components/About";
 import Stats from "../components/Stats";
 import Services from "../components/Services";
+import WorkoutVideos from "../components/WorkoutVideos";
 import Testimonials from "../components/Testimonials";
 import CTASection from "../components/CTASection";
 import Footer from "../components/Footer";
@@ -21,6 +22,7 @@ function Home() {
       <About />
       <Stats />
       <Services />
+      <WorkoutVideos />
       <Testimonials />
       <CTASection />
       <Footer />
